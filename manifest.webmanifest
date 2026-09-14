@@ -1,0 +1,11 @@
+{
+ "name": "宏利产品怎么选 · 张毛妈",
+ "short_name": "宏利怎么选",
+ "start_url": "./index.html",
+ "scope": "./",
+ "display": "standalone",
+ "background_color": "#ffffff",
+ "theme_color": "#0b5fa5",
+ "lang": "zh-CN",
+ "icons": []
+}

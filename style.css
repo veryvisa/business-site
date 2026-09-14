@@ -1,0 +1,104 @@
+/* 宏利产品对比站 · 手机优先。三条硬要求：不横向滚动、深浅色跟随系统、正文 ≥17px。
+   派生物由 bin/site_build.py 原样拷进 build/site/style.css，改这里就是改全站。 */
+:root {
+  color-scheme: light dark;
+  --bg: #ffffff;
+  --fg: #17191c;
+  --muted: #5b6572;
+  --line: #e2e6ea;
+  --card: #f7f9fb;
+  --accent: #0b5fa5;
+  --warn: #8a5a00;
+  --warn-bg: #fff7e6;
+  --radius: 12px;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #14171a;
+    --fg: #e7eaee;
+    --muted: #9aa5b1;
+    --line: #2b3138;
+    --card: #1b1f24;
+    --accent: #7db3ff;
+    --warn: #f0c064;
+    --warn-bg: #2a2415;
+  }
+}
+* { box-sizing: border-box; }
+html { -webkit-text-size-adjust: 100%; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 17px/1.75 -apple-system, BlinkMacSystemFont, "PingFang SC", "Hiragino Sans GB",
+        "Microsoft YaHei", system-ui, sans-serif;
+  overflow-wrap: anywhere;
+}
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+.skip { position: absolute; left: -9999px; }
+.skip:focus { left: 1rem; top: .5rem; background: var(--card); padding: .4rem .8rem; z-index: 9; }
+
+header.site {
+  display: flex; flex-wrap: wrap; gap: .4rem 1rem; align-items: baseline;
+  padding: .9rem 1rem; border-bottom: 1px solid var(--line);
+  position: sticky; top: 0; background: var(--bg); z-index: 5;
+}
+.brand { font-weight: 700; text-decoration: none; color: var(--fg); }
+.nav { display: flex; flex-wrap: wrap; gap: .25rem .9rem; font-size: .95rem; }
+
+main {
+  max-width: 46rem;
+  margin: 0 auto;
+  padding: 1rem 1rem 3rem;
+}
+h1 { font-size: 1.6rem; line-height: 1.35; margin: .6rem 0 1rem; }
+h2 { font-size: 1.25rem; margin: 2rem 0 .6rem; padding-bottom: .3rem; border-bottom: 1px solid var(--line); }
+h3 { font-size: 1.08rem; margin: 1.4rem 0 .4rem; }
+p, li { font-size: 1rem; }
+ul, ol { padding-left: 1.3rem; }
+img { max-width: 100%; height: auto; border-radius: var(--radius); }
+figure { margin: 1.2rem 0; }
+figcaption { color: var(--muted); font-size: .9rem; margin-top: .4rem; }
+blockquote {
+  margin: 1rem 0; padding: .6rem .9rem; background: var(--warn-bg);
+  border-left: 3px solid var(--warn); color: var(--warn); border-radius: 0 var(--radius) var(--radius) 0;
+}
+blockquote p { margin: .2rem 0; color: inherit; }
+code { background: var(--card); padding: .1rem .3rem; border-radius: 4px; font-size: .92em; }
+
+/* 表格一律进滚动容器：手机上宽表是横向滚动的唯一来源，site_build --check 会盯这一条 */
+.tbl { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 1rem 0; border: 1px solid var(--line); border-radius: var(--radius); }
+.tbl table { border-collapse: collapse; width: 100%; min-width: 32rem; font-size: .95rem; }
+.tbl th, .tbl td { padding: .55rem .7rem; border-bottom: 1px solid var(--line); text-align: left; vertical-align: top; }
+.tbl th { background: var(--card); font-weight: 600; white-space: nowrap; }
+.tbl tr:last-child td { border-bottom: 0; }
+
+.cards { display: grid; gap: .75rem; grid-template-columns: 1fr; margin: 1rem 0; list-style: none; padding: 0; }
+@media (min-width: 34rem) { .cards { grid-template-columns: 1fr 1fr; } }
+.cards li { margin: 0; }
+.cards a {
+  display: block; padding: .8rem .9rem; background: var(--card);
+  border: 1px solid var(--line); border-radius: var(--radius); text-decoration: none; color: var(--fg);
+}
+.cards a strong { display: block; color: var(--accent); }
+.cards a span { color: var(--muted); font-size: .92rem; }
+
+.search { margin: 1.2rem 0; }
+.search input {
+  width: 100%; padding: .7rem .9rem; font-size: 1rem; color: var(--fg);
+  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
+}
+#qr { list-style: none; padding: 0; margin: .5rem 0 0; }
+#qr li { padding: .4rem 0; border-bottom: 1px solid var(--line); }
+#qr li span { display: block; color: var(--muted); font-size: .9rem; }
+#qr li.none { color: var(--muted); }
+
+.pagefoot { margin-top: 2.5rem; border-top: 2px solid var(--line); padding-top: .5rem; }
+.pagefoot h2 { border: 0; font-size: 1.1rem; }
+.sources td { font-size: .9rem; }
+.disclaimer { color: var(--muted); font-size: .92rem; background: var(--card); padding: .8rem .9rem; border-radius: var(--radius); }
+.ask li { margin: .3rem 0; }
+
+footer.site { border-top: 1px solid var(--line); padding: 1.2rem 1rem 2.5rem; color: var(--muted); font-size: .9rem; }
+footer.site p { margin: .3rem 0; max-width: 46rem; }
+footer.site .meta { font-size: .85rem; }

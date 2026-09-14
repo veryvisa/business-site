@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="银行、保险、投资三条线的产品对照，穿插税务后果；看完知道该问经纪什么。">
+<title>宏利产品怎么选</title>
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.webmanifest">
+</head>
+<body>
+<a class="skip" href="#main">跳到正文</a>
+<header class="site">
+  <a class="brand" href="index.html">宏利产品怎么选</a>
+  <nav class="nav"><a href="index.html#products">按产品</a><a href="about.html">关于与联系</a></nav>
+</header>
+<main id="main">
+<h1>宏利产品怎么选</h1>
+<p>把宏利（Manulife）在加拿大的银行、保险、投资产品放在一起看：每个产品讲清楚<strong>它解决什么问题</strong>、
+<strong>同类里怎么比</strong>、<strong>钱进出时税上会发生什么</strong>，每条事实都挂官方出处和核对日期。</p>
+<p>不用登录、手机可读。看完带着具体问题去找经纪，比听一轮介绍有用得多。</p>
+<div class="search"><input id="q" type="search" placeholder="搜产品名、机构或关键词（两个字以上）" aria-label="站内搜索"><ul id="qr"></ul></div>
+
+<h2 id="products">按产品</h2>
+<p>先弄清楚这个产品本身是什么、条款怎么写。</p>
+<ul class="cards"><li><a href="products/manulife-advantage-account.html"><strong>宏利银行活期王 Advantage Account（示例页）</strong><span>示例页：产品页长什么样、事实怎么挂出处、尾巴有哪几块。内容以官方页当期公布为准。</span></a></li></ul>
+
+<h2 id="compare">按对比</h2>
+<p>同一笔钱放在不同机构、不同产品里，差别在哪。</p>
+<p class="disclaimer">「按对比」这一栏还没有页面。</p>
+
+<h2 id="tax">按税务问题</h2>
+<p>钱进来、放着、拿出去、传下去——每一步税上会发生什么。</p>
+<p class="disclaimer">「按税务问题」这一栏还没有页面。</p>
+
+<h2>怎么读这个站</h2>
+<ul>
+<li>每页最底下有<strong>事实来源表</strong>：官方原文链接加上我们最近一次核对的日期。利率、额度、费用会变，看到数字先对一眼日期。</li>
+<li>每页有<strong>「与经纪聊什么」</strong>：三到五个问题，抄下来直接问，比问「哪个好」有用。</li>
+<li>税务部分只讲<strong>后果与该问谁</strong>。个案怎么安排要看你的整体收入结构，得回到主管机构原文和持牌专业意见。</li>
+</ul>
+<section class="pagefoot">
+<h2>事实来源</h2>
+<div class="tbl"><table class="sources"><thead><tr><th>官方原文</th><th>核对日期</th></tr></thead><tbody><tr><td><a href="https://www.manulifebank.ca/" rel="nofollow noopener">https://www.manulifebank.ca/</a></td><td>2026-09-13</td></tr><tr><td><a href="https://www.manulife.ca/personal.html" rel="nofollow noopener">https://www.manulife.ca/personal.html</a></td><td>2026-09-13</td></tr></tbody></table></div>
+<h2>音视频与笔记本</h2><p class="disclaimer">本页的音频、视频与讲稿还没做（NotebookLM 产出后回填）。</p>
+<p class="disclaimer">本页是公开资料的整理与对照，不是官方文件，也不构成针对你个人情况的保险、投资或税务建议。产品条款、利率与费用以机构当期官方文件为准；税务处理以主管机构原文与持牌专业意见为准。数字会变，看到本页请对一眼「核对日期」。</p>
+</section>
+</main>
+<footer class="site">
+  <p>张毛妈 · 持牌保险经纪 ｜ 本站内容为公开资料整理，非官方文件、非个案建议。</p>
+  <p class="meta">页面更新：2026-09-13　·　站点生成：2026-09-14</p>
+</footer>
+<script>
+// 零依赖站内搜索：输入两个字以上才查，命中前 12 条。search.json 由 bin/site_build.py 生成。
+(function () {
+  var box = document.getElementById('q'), out = document.getElementById('qr');
+  if (!box || !out) return;
+  var data = null;
+  function load() {
+    if (data) return Promise.resolve(data);
+    return fetch('search.json').then(function (r) { return r.json(); }).then(function (j) { data = j; return j; });
+  }
+  box.addEventListener('input', function () {
+    var q = box.value.trim().toLowerCase();
+    if (q.length < 2) { out.innerHTML = ''; return; }
+    load().then(function (j) {
+      var hits = j.filter(function (it) {
+        return (it.title + ' ' + it.summary).toLowerCase().indexOf(q) >= 0;
+      }).slice(0, 12);
+      out.innerHTML = hits.length
+        ? hits.map(function (it) {
+            return '<li><a href="' + it.url + '">' + it.title + '</a><span>' + it.summary + '</span></li>';
+          }).join('')
+        : '<li class="none">没有匹配的页面</li>';
+    });
+  });
+})();
+</script>
+<script>if('serviceWorker' in navigator){addEventListener('load',()=>navigator.serviceWorker.register('sw.js').catch(()=>{}))}</script>
+</body>
+</html>
