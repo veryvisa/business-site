@@ -1,6 +1,6 @@
 /* 宏利产品怎么选 · 张毛妈 · 离线缓存。版本＝内容哈希，新发布自动汰旧。 */
 const CACHE_PREFIX = 'vv-business-';
-const VERSION = CACHE_PREFIX + '255e65a96d58';
+const VERSION = CACHE_PREFIX + 'a586722700ec';
 const PRECACHE = ["./.nojekyll", "./about.html", "./index.html", "./products/manulife-advantage-account.html", "./robots.txt", "./search.json", "./sitemap.xml", "./style.css", "./manifest.webmanifest"];
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(VERSION).then(async (c) => {
