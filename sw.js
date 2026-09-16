@@ -1,7 +1,7 @@
 /* 宏利产品怎么选 · 张毛妈 · 离线缓存。版本＝内容哈希，新发布自动汰旧。 */
 const CACHE_PREFIX = 'vv-business-';
-const VERSION = CACHE_PREFIX + 'a586722700ec';
-const PRECACHE = ["./.nojekyll", "./about.html", "./index.html", "./products/manulife-advantage-account.html", "./robots.txt", "./search.json", "./sitemap.xml", "./style.css", "./manifest.webmanifest"];
+const VERSION = CACHE_PREFIX + '575f73c6272f';
+const PRECACHE = ["./.nojekyll", "./about.html", "./compare/cash-advantage-vs-gic.html", "./compare/manulife-one-vs-advantage.html", "./compare/move-and-spend-money.html", "./index.html", "./products/manulife-advantage-account.html", "./products/manulife-gic.html", "./products/manulife-one.html", "./products/manulife-term-life.html", "./products/manulife-transfers-wire.html", "./products/manulife-visa-cards.html", "./robots.txt", "./search.json", "./sitemap.xml", "./style.css", "./tax/borrowing-interest-deductible.html", "./tax/interest-income-and-t5.html", "./tax/life-insurance-money-and-tax.html", "./manifest.webmanifest"];
 self.addEventListener('install', (e) => {
   e.waitUntil(caches.open(VERSION).then(async (c) => {
     for (const u of PRECACHE) { try { await c.add(new Request(u, {cache: 'reload'})); } catch (_) {} }
