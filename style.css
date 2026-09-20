@@ -73,11 +73,19 @@ a:hover { color: var(--accent-ink); }
 .cover { position: relative; isolation: isolate; min-height: 300px; display: flex; align-items: flex-end; background: var(--navy); color: #fff; overflow: hidden; }
 .cover.tall { min-height: 420px; }
 .cover-bg { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; object-position: center; z-index: -2; border-radius: 0; }
-.cover.from-card .cover-bg { object-position: top; filter: saturate(.75) blur(1px); }
+/* 知识卡缩略图当封面底图时，卡上的字会透出来跟标题打架（2026-09-20 手机实测：
+   「促销利率为 3.00%」「$500,000」在白色标题后面依稀可读，看着脏）。
+   两手一起上：重模糊＋放大 1.08 倍（盖住模糊后的边），以及下面 .cover.from-card::before 的更重遮罩。
+   判据：背景里不许出现可辨认的文字。 */
+.cover.from-card .cover-bg { object-position: top; filter: blur(14px) saturate(.7) brightness(.8); transform: scale(1.08); }
 .cover::before {
   content: ""; position: absolute; inset: 0; z-index: -1;
   background: linear-gradient(90deg, rgba(11, 27, 44, .93) 0%, rgba(11, 27, 44, .82) 45%, rgba(11, 27, 44, .38) 100%),
               linear-gradient(180deg, rgba(11, 27, 44, .25) 0%, rgba(11, 27, 44, .72) 100%);
+}
+.cover.from-card::before {
+  background: linear-gradient(90deg, rgba(20, 32, 54, .96) 0%, rgba(20, 32, 54, .92) 55%, rgba(20, 32, 54, .8) 100%),
+              linear-gradient(180deg, rgba(20, 32, 54, .8) 0%, rgba(20, 32, 54, .94) 100%);
 }
 .cover .wrap { width: 100%; padding-block: clamp(26px, 4vw, 46px); }
 .cover .eyebrow { color: #e8c98c; }
@@ -267,6 +275,7 @@ footer.site .sig .leaf { width: 22px; height: 22px; }
   .cover { min-height: 250px; }
   .cover.tall { min-height: 300px; }
   .cover::before { background: linear-gradient(180deg, rgba(11, 27, 44, .5) 0%, rgba(11, 27, 44, .92) 100%); }
+  .cover.from-card::before { background: linear-gradient(180deg, rgba(20, 32, 54, .9) 0%, rgba(20, 32, 54, .96) 100%); }
   .foot-grid { grid-template-columns: 1fr; }
   .tbl-toggle { display: inline-block; }
   .lb-hint { display: none; }
