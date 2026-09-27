@@ -89,17 +89,23 @@
   wraps.forEach(function (w) {
     var t = w.querySelector('table'); if (!t) return;
     var heads = Array.prototype.map.call(t.querySelectorAll('thead th'), function (th) { return th.textContent.trim(); });
-    if (heads.length < 3) return;
+    if (heads.length < 2) return;
     Array.prototype.forEach.call(t.querySelectorAll('tbody tr'), function (tr) {
       Array.prototype.forEach.call(tr.children, function (td, i) { if (heads[i]) td.setAttribute('data-h', heads[i]); });
     });
     var b = document.createElement('button');
-    var initialStack = window.matchMedia('(max-width:700px)').matches;
+    var mobileQuery = window.matchMedia('(max-width:700px)');
+    var initialStack = mobileQuery.matches;
     w.classList.toggle('stacked', initialStack);
     t.setAttribute('role','table');
     Array.prototype.forEach.call(t.querySelectorAll('tr'), function(r){r.setAttribute('role','row');});
     b.type = 'button'; b.className = 'tbl-toggle'; b.textContent = initialStack ? '并排看' : '逐行看';
     b.setAttribute('aria-pressed', String(initialStack));
+    mobileQuery.addEventListener('change', function (event) {
+      w.classList.toggle('stacked', event.matches);
+      b.textContent = event.matches ? '并排看' : '逐行看';
+      b.setAttribute('aria-pressed', String(event.matches));
+    });
     b.addEventListener('click', function () {
       var on = w.classList.toggle('stacked');
       b.textContent = on ? '并排看' : '逐行看';
