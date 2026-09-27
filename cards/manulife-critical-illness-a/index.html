@@ -22,17 +22,16 @@
       <span class="leaf" aria-hidden="true"></span>
       <span class="brand-txt"><b>宏利产品怎么选</b><small>张毛妈 · 持牌保险经纪</small></span>
     </a>
-    <button class="menu-btn" aria-label="打开菜单" aria-expanded="false"
-      onclick="document.body.classList.toggle('nav-open');this.setAttribute('aria-expanded',document.body.classList.contains('nav-open'))">菜单</button>
-    <nav class="nav" aria-label="主要导航"><a href="../../index.html#products">按产品</a><a href="../../index.html#compare">按对比</a><a href="../../index.html#tax">按税务问题</a><a href="../../cards/index.html">知识卡</a><a href="../../about.html">关于与联系</a></nav>
+
+    <nav class="nav" aria-label="主要导航"><a href="../../index.html#products">按产品</a><a href="../../index.html#compare">按对比</a><a href="../../index.html#tax">按税务问题</a></nav>
   </div>
 </header>
 <section class="cover from-card" aria-label="页面封面"><img class="cover-bg" src="../../img/cards/manulife-critical-illness-a.t.jpg" alt="" fetchpriority="high" decoding="async"><div class="wrap"><p class="crumb"><a href="../../index.html">首页</a> › <a href="../../cards/index.html">知识卡</a> › <a href="../../products/manulife-critical-illness.html">宏利重疾险 Lifecheque 与 CoverMe CI</a></p><p class="eyebrow">知识卡</p><h1>Basic 保额按投保年龄 · 知识卡</h1><p class="lead">Basic 保额按投保年龄分档，另看等待期与合同定义。 出自「宏利重疾险 Lifecheque 与 CoverMe CI」。</p></div></section>
 <main id="main">
 
-
 <article class="card-detail"><figure class="cd-pic"><a href="../../img/cards/manulife-critical-illness-a.png" download="manulife-critical-illness-a.png" title="下载原图" aria-label="下载这张知识卡的原图 PNG"><img src="../../img/cards/manulife-critical-illness-a.png" alt="Basic 保额按投保年龄；满足重疾定义后一次性现金给付；18–55 岁；56–60 岁；61–65 岁；后四类各有 30 天等待期；保障可延续至 75 岁" width="1200" height="1600" decoding="async"></a></figure><div class="cd-text"><p class="eyebrow">知识卡 · 宏利重疾险 Lifecheque 与 CoverMe CI · 第 1 / 2 张</p><h2>Basic 保额按投保年龄</h2><p class="lead">满足重疾定义后一次性现金给付</p><b class="takeaway">Basic 保额按投保年龄分档，另看等待期与合同定义。</b><ul class="guide"><li><span>先看</span>先辨三档人群：可选范围会随投保时年龄改变。</li><li><span>易漏</span>别把那段期限理解成五类全部适用；最终范围还要回到合同核对。</li><li><span>下一步</span>去按产品页，把自己的年龄和想买保额带给持牌专业人士核对。</li></ul><p class="btn-row"><a class="button primary" href="../../products/manulife-critical-illness.html#card-manulife-critical-illness-a">读这一节正文</a><a class="button" href="../../img/cards/manulife-critical-illness-a.png" download="manulife-critical-illness-a.png">下载原图 PNG</a><a class="button" href="../../cards/index.html">全部知识卡</a></p><nav class="pager" aria-label="翻页"><span><a href="../../cards/manulife-term-life-b/index.html">← 寿险赔款与保费税务后果</a></span><span><a href="../../cards/manulife-critical-illness-b/index.html">重疾险税务后果：个人、雇主、公司 →</a></span></nav><p class="small">卡上每个字都出自本站正本（规则核对基准日 2026-09-16）；分享请连同导读一起发。论坛只放本页文字链接，不上传图片。</p></div></article>
 <section class="cd-others"><h2>同一页的其他卡</h2><div class="cd-strip"><a href="../../cards/manulife-critical-illness-b/index.html"><img src="../../img/cards/manulife-critical-illness-b.t.jpg" alt="重疾险税务后果：个人、雇主、公司" width="600" height="800" loading="lazy"><span>重疾险税务后果：个人、雇主、公司</span></a></div></section>
+
 <section class="pagefoot"><h2>事实来源</h2><div class="tbl"><table class="sources"><thead><tr><th>官方原文</th><th>核对日期</th></tr></thead><tbody><tr><td>卡上文字出自本站正本页面，正本页面底部列着官方原文与核对日期：<a href="https://www.manulifebank.ca/" rel="nofollow noopener">https://www.manulifebank.ca/</a></td><td>见各正本页</td></tr></tbody></table></div><p class="disclaimer">本页是公开资料的整理与对照，不是官方文件，也不构成针对你个人情况的保险、投资或税务建议。产品条款、利率与费用以机构当期官方文件为准；税务处理以主管机构原文与持牌专业意见为准。数字会变，看到本页请对一眼「核对日期」。</p></section>
 <!-- vf:start --><div class="vf-tools" role="group" data-pagefind-ignore aria-label="阅读工具"><button type="button" data-vf-save hidden>保存本页</button><button type="button" data-vf-print hidden>打印 / 存为 PDF</button><span data-vf-status role="status" aria-live="polite"></span></div><!-- vf:end --></main>
 <footer class="site">
@@ -95,8 +94,12 @@
       Array.prototype.forEach.call(tr.children, function (td, i) { if (heads[i]) td.setAttribute('data-h', heads[i]); });
     });
     var b = document.createElement('button');
-    b.type = 'button'; b.className = 'tbl-toggle'; b.textContent = '逐行看';
-    b.setAttribute('aria-pressed', 'false');
+    var initialStack = window.matchMedia('(max-width:700px)').matches;
+    w.classList.toggle('stacked', initialStack);
+    t.setAttribute('role','table');
+    Array.prototype.forEach.call(t.querySelectorAll('tr'), function(r){r.setAttribute('role','row');});
+    b.type = 'button'; b.className = 'tbl-toggle'; b.textContent = initialStack ? '并排看' : '逐行看';
+    b.setAttribute('aria-pressed', String(initialStack));
     b.addEventListener('click', function () {
       var on = w.classList.toggle('stacked');
       b.textContent = on ? '并排看' : '逐行看';

@@ -296,3 +296,9 @@ footer.site .sig .leaf { width: 22px; height: 22px; }
   h1, h2, h3 { break-after: avoid; }
   .kcards-grid { grid-template-columns: 1fr 1fr; }
 }
+
+/* Reading comes before the optional card gallery. */
+#how,#products,#compare,#tax{scroll-margin-top:9rem}.nav a{min-height:44px}
+@media(max-width:700px){.utility{font-size:.72rem}.mast-in{gap:.5rem}.nav,body.nav-open .nav{display:flex;width:100%;flex-wrap:nowrap;margin:0;gap:.1rem}.nav a{flex:1;justify-content:center;padding:0 .3rem}.menu-btn{display:none}.cover.tall{min-height:230px}.cover .wrap{padding-block:24px}.cover h1{font-size:2rem}.cover .lead{font-size:1rem}.cover .btn-row .button{min-height:44px;padding:.6rem}.tbl.stacked table{display:block;width:100%}.tbl.stacked thead{display:table-header-group;position:absolute;width:1px;height:1px;overflow:hidden;clip-path:inset(50%)}.tbl.stacked tbody{display:block}.tbl.stacked td{display:block;overflow-wrap:anywhere}.tbl.stacked td::before{display:block}}
+
+.tbl-toggle{min-height:44px}
